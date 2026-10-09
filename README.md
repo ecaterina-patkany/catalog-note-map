@@ -20,9 +20,12 @@ TypeScript pe Node 22, cu Express
 ## Rulare
 
 ```
-docker build -t map-proiect .
-docker run -d -p 8080:8080 map-proiect
+docker build -t catalog-note-map .
+docker run -d -p 8080:8080 catalog-note-map
 ```
+
+> [!WARNING]  
+> Pentru a putea rula ultima comanda cu success, asigurati-va ca pe portul 8080 nu ruleaza altceva simultan ;)
 
 Aplicatia asculta pe portul 8080. Verificati:
 

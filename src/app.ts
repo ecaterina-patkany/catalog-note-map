@@ -4,7 +4,7 @@
 
 import express, { type Express, type Request, type Response } from 'express';
 
-export const APP_NAME = 'map-project';
+export const APP_NAME = 'catalog-note-map';
 export const APP_VERSION = '0.1.0';
 
 const startedAt = process.hrtime.bigint();
@@ -56,14 +56,17 @@ export function createApp(): Express {
   });
 
   app.get('/', (_req: Request, res: Response) => {
-    res.type('html').send(`<!DOCTYPE html>
-<html lang="ro"><head><meta charset="utf-8"><title>${APP_NAME}</title></head>
-<body>
-<h1>${APP_NAME}</h1>
-<p>Autor: NUME PRENUME, grupa GRUPA</p>
-<p>Tema: NUMARUL TEMEI</p>
-<p>Versiune: ${APP_VERSION}, commit ${env('APP_COMMIT', 'dev')}</p>
-</body></html>`);
+    res.type('html').send(
+      `<!DOCTYPE html>
+          <html lang="ro"><head><meta charset="utf-8"><title>${APP_NAME}</title></head>
+            <body>
+              <h1>${APP_NAME}</h1>
+              <p>Autor: PATKANY ECATERINA, grupa 2.1</p>
+              <p>Tema: 1</p>
+              <p>Versiune: ${APP_VERSION}, commit ${env('APP_COMMIT', 'dev')}</p>
+            </body>
+        </html>
+    `);
   });
 
   app.use((_req: Request, res: Response) => {

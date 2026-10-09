@@ -10,8 +10,8 @@ RUN npm run build
 # Stage 2 - runtime. Only production dependencies and compiled output.
 FROM node:22-alpine
 LABEL org.opencontainers.image.title="MAP proiect" \
-      org.opencontainers.image.authors="Nume Prenume <email@student.upt.ro>" \
-      org.opencontainers.image.source="https://github.com/utilizator/repo"
+      org.opencontainers.image.authors="Patkany Ecaterina <ecaterina.patkany@student.upt.ro>" \
+      org.opencontainers.image.source="https://github.com/ecaterina-patkany/catalog-note-map"
 
 ARG COMMIT=dev
 ARG BUILT_AT=unknown

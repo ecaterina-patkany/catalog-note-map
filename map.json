@@ -1,10 +1,10 @@
 {
   "sablon": "map-2026-2027-v1-node",
-  "nume": "[Nume Prenume]",
-  "grupa": "[grupa]",
-  "marca": 0,
-  "email": "[prenume.nume@student.upt.ro]",
-  "tema": 0,
+  "nume": "Patkay Ecaterina",
+  "grupa": "2.1",
+  "marca": "LH715734",
+  "email": "ecaterina.patkany@student.upt.ro]",
+  "tema": 3,
   "limbaj": "node",
   "extensii": []
 }
