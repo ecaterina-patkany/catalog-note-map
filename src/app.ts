@@ -29,6 +29,11 @@ function env(key: string, fallback: string): string {
   return process.env[key] || fallback;
 }
 
+// The contract asks for the short SHA; CI passes the full 40-character one.
+function shortCommit(): string {
+  return env('APP_COMMIT', 'dev').slice(0, 7);
+}
+
 function uptimeSeconds(): number {
   return Number((process.hrtime.bigint() - startedAt) / 1_000_000_000n);
 }
@@ -45,7 +50,7 @@ export function createApp(): Express {
     res.json({
       app: APP_NAME,
       version: APP_VERSION,
-      commit: env('APP_COMMIT', 'dev'),
+      commit: shortCommit(),
       built_at: env('APP_BUILT_AT', 'unknown'),
     });
   });
@@ -63,7 +68,7 @@ export function createApp(): Express {
               <h1>${APP_NAME}</h1>
               <p>Autor: PATKANY ECATERINA, grupa 2.1</p>
               <p>Tema: 3</p>
-              <p>Versiune: ${APP_VERSION}, commit ${env('APP_COMMIT', 'dev')}</p>
+              <p>Versiune: ${APP_VERSION}, commit ${shortCommit()}</p>
             </body>
         </html>
     `);

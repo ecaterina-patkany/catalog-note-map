@@ -22,6 +22,12 @@ describe('common contract', () => {
     expect(response.body.built_at).toBeTruthy();
   });
 
+  it('version shortens a full commit sha to 7 characters', async () => {
+    process.env.APP_COMMIT = 'a1d328a8144f9a5f806c650c2f0a3af4b1e64c65';
+    const response = await request(app).get('/version');
+    expect(response.body.commit).toBe('a1d328a');
+  });
+
   it('reset returns no content', async () => {
     const response = await request(app).post('/reset');
     expect(response.status).toBe(204);
