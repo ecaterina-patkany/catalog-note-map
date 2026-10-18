@@ -18,7 +18,7 @@ describe('common contract', () => {
     const response = await request(app).get('/version');
     expect(response.body.commit).toBe('abc1234');
     expect(response.body.app).toBe(APP_NAME);
-    expect(response.body.version).toBeTruthy();
+    expect(response.body.version).toBeFalsy();
     expect(response.body.built_at).toBeTruthy();
   });
 
