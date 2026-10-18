@@ -62,7 +62,7 @@ export function createApp(): Express {
             <body>
               <h1>${APP_NAME}</h1>
               <p>Autor: PATKANY ECATERINA, grupa 2.1</p>
-              <p>Tema: 1</p>
+              <p>Tema: 3</p>
               <p>Versiune: ${APP_VERSION}, commit ${env('APP_COMMIT', 'dev')}</p>
             </body>
         </html>

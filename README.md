@@ -1,3 +1,5 @@
+[![CI](https://github.com/ecaterina-patkany/catalog-note-map/actions/workflows/ci.yml/badge.svg)](https://github.com/ecaterina-patkany/catalog-note-map/actions/workflows/ci.yml)
+
 # Catalog Note
 
 Proiect individual la disciplina Metode avansate de programare, anul universitar 2026-2027.
@@ -6,7 +8,7 @@ Proiect individual la disciplina Metode avansate de programare, anul universitar
 
 - **Nume:** Patkany Ecaterina
 - **Grupa:** 2.1
-- **Marca:** LH71534
+- **Marca:** LH715734
 - **Tema:** 3 - Catalog de Note
 
 ## Descriere
@@ -49,7 +51,6 @@ npm test
 | `/version` | GET | Versiunea si commit-ul din care a fost construita imaginea |
 | `/` | GET | Pagina de prezentare |
 | `/reset` | POST | Goleste datele din memorie |
-| [ruta temei] | [metoda] | [descriere] |
 
 ## Decizii de implementare
 
