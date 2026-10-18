@@ -21,19 +21,53 @@ TypeScript pe Node 22, cu Express
 
 ## Rulare
 
-```
-docker build -t catalog-note-map .
-docker run -d -p 8080:8080 catalog-note-map
-```
+Aplicatia asculta pe portul 8080.
 
 > [!WARNING]  
-> Pentru a putea rula ultima comanda cu success, asigurati-va ca pe portul 8080 nu ruleaza altceva simultan ;)
+> Pentru a putea rula aplicatia cu success, asigurati-va ca pe portul 8080 nu ruleaza altceva simultan ;)
 
-Aplicatia asculta pe portul 8080. Verificati:
+### Varianta 1 - imaginea publicata in GHCR
+
+Imaginea este construita si publicata automat de CI la fiecare push pe `main`.
+
+```
+docker pull ghcr.io/ecaterina-patkany/catalog-note-map:latest
+docker run -d -p 8080:8080 --name map ghcr.io/ecaterina-patkany/catalog-note-map:latest
+```
+
+`docker pull` este necesar pentru a obtine ultima versiune: `docker run` nu descarca imaginea
+daca exista deja o copie locala, chiar daca este mai veche.
+
+### Varianta 2 - imagine construita local
+
+```
+docker build -t catalog-note-map --build-arg COMMIT=$(git rev-parse --short HEAD) .
+docker run -d -p 8080:8080 --name map catalog-note-map
+```
+
+Fara `--build-arg COMMIT=...`, ruta `/version` raporteaza `"commit":"dev"`.
+
+### Varianta 3 - fara Docker (Node 22)
+
+```
+npm ci
+npm run build
+npm start
+```
+
+### Verificare
 
 ```
 curl http://localhost:8080/health
 curl http://localhost:8080/version
+curl http://localhost:8080/
+curl -i -X POST http://localhost:8080/reset
+```
+
+### Oprire
+
+```
+docker rm -f map
 ```
 
 ## Testare
