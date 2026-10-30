@@ -6,7 +6,11 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "vitest run"
+    "test": "vitest run",
+    "docker:stop": "docker rm -f map || true",
+    "docker:start": "docker build -t catalog-note-map --build-arg COMMIT=$(git rev-parse --short HEAD) . && docker run -d -p 8080:8080 --name map catalog-note-map",
+    "tunnel": "docker run --rm cloudflare/cloudflared:latest tunnel --url http://host.docker.internal:8080",
+    "share": "npm run docker:stop && npm run docker:start && npm run tunnel"
   },
   "dependencies": {
     "express": "4.21.2"
