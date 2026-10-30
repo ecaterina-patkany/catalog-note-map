@@ -26,6 +26,9 @@ Aplicatia asculta pe portul 8080.
 > [!WARNING]  
 > Pentru a putea rula aplicatia cu success, asigurati-va ca pe portul 8080 nu ruleaza altceva simultan ;)
 
+> [!INFO]  
+> Pentru accesul public prin Cloudfare, vedeti mai jos :)
+
 ### Varianta 1 - imaginea publicata in GHCR
 
 Imaginea este construita si publicata automat de CI la fiecare push pe `main`.
@@ -62,6 +65,26 @@ curl http://localhost:8080/health
 curl http://localhost:8080/version
 curl http://localhost:8080/
 curl -i -X POST http://localhost:8080/reset
+```
+
+### Acces public printr-un tunel Cloudflare
+
+Cu aplicatia pornita pe portul 8080 (oricare dintre variantele de mai sus), intr-un terminal nou:
+
+```
+# macOS / Windows (Docker Desktop)
+docker run --rm cloudflare/cloudflared:latest tunnel --url http://host.docker.internal:8080
+
+# Linux
+docker run --rm --network host cloudflare/cloudflared:latest tunnel --url http://localhost:8080
+```
+
+Dupa cateva secunde apare o adresa de forma `https://ceva-aleator-aici.trycloudflare.com`.
+Adresa este temporara: se schimba la fiecare pornire si dispare cand oprim tunelul (Ctrl+C).
+Se poate verifica de pe telefon, pe date mobile:
+
+```
+curl https://ceva-aleator-aici.trycloudflare.com/health
 ```
 
 ### Oprire
