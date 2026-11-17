@@ -29,7 +29,7 @@ Aplicatia asculta pe portul 8080.
 > [!WARNING]  
 > Pentru a putea rula aplicatia cu success, asigurati-va ca pe portul 8080 nu ruleaza altceva simultan ;)
 
-> [!INFO]  
+> [!NOTE]  
 > Pentru accesul public prin Cloudfare, vedeti mai jos :)
 
 ### Varianta 1 - imaginea publicata in GHCR
